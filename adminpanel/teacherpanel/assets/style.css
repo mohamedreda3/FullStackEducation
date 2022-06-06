@@ -1,0 +1,351 @@
+@font-face {
+    font-family: lato;
+    src: url(../../../adminpanel/controlpanal/assets/Lato-Regular.ttf) format('truetype')
+}
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    position: relative;
+    font-family: cera-round-pro, "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+body, html {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    padding: 10px 0
+}
+
+.nav_container {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px
+}
+
+.logo_site {
+    width: 175px
+}
+
+.nav_container h1.site_logo {
+    width: 50px;
+    height: 50px;
+    transition: .5s all
+}
+
+.logo_site.active h1.site_logo {
+    width: 30px;
+    height: 30px
+}
+
+.nav_container h1.site_logo img {
+    width: 100%
+}
+
+.nav_elements {
+    width: calc(100% - 200px);
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: .5s all
+}
+
+.nav_elements .menu {
+    font-size: 25px;
+    cursor: pointer
+}
+
+.teacher_panel {
+    width: 200px;
+    height: 100%
+}
+
+.teacher_panel .teacher_image {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    cursor: pointer
+}
+
+.teacher_panel .teacher_image .iamge {
+    width: 60px;
+    height: 60px;
+    overflow: hidden
+}
+
+.teacher_panel .teacher_image .iamge img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%
+}
+
+.teacher_panel .teacher_image .dropmenu {
+    width: 80%;
+    height: 0;
+    background: #fff;
+    position: absolute;
+    top: 112%;
+    transition: .5s all;
+    overflow: hidden;
+    border-radius: 5px;
+    right: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    font-size: 16px
+}
+
+.teacher_panel .teacher_image input[type=checkbox] {
+    display: none
+}
+
+.teacher_panel .teacher_image input[type=checkbox]:checked~.dropmenu {
+    height: 100px;
+    padding: 0 10px;
+    box-shadow: 1px 1px 10px 1px #6c7383
+}
+
+.teacher_panel .teacher_image .dropmenu span {
+    display: block;
+    cursor: pointer;
+    margin: 5px 0;
+    display: flex;
+    width: 100%;
+    align-items: center
+}
+
+.teacher_panel .teacher_image .dropmenu span em {
+    display: block;
+    font-style: normal;
+    margin-left: 5px
+}
+
+.panel_container {
+    width: 100%;
+    height: 100%;
+    transition: .5s ease;
+    display: flex
+}
+
+.panel_container .left_panel_sidebar {
+    width: 175px;
+    height: calc(100% - 120px);
+    overflow: hidden;
+    padding: 10px;
+    transition: .5s ease
+}
+
+.panel_container .left_panel_sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: .5s ease
+}
+
+.panel_container .left_panel_sidebar ul li {
+    width: 100%;
+    height: 36px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    line-height: 2rem;
+    transition: .5s ease;
+    user-select: none;
+    overflow: hidden
+}
+
+.panel_container .left_panel_sidebar ul li:hover {
+    background: #555589;
+    color: #fff;
+    padding: 0 10px;
+    border-radius: 3px
+}
+
+.right_panel_sidebar {
+    width: calc(100% - 200px)
+}
+
+.right_panel_sidebar.active {
+    width: calc(100% - 80px)
+}
+
+.panel_container .left_panel_sidebar.active {
+    width: 75px
+}
+
+.panel_container.active .left_panel_sidebar ul li {
+    text-align: center
+}
+
+.logo_site.active {
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center
+}
+
+.nav_elements.active {
+    width: calc(100% - 80px)
+}
+
+.content {
+    width: 100%;
+    margin: 0 auto;
+    overflow: hidden
+}
+
+.content h2 {
+    margin: 0;
+    padding: 25px 0;
+    font-size: 22px;
+    border-bottom: 1px solid #e0e0e3;
+    color: #4a536e
+}
+
+.content>div, .content>p {
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, .1);
+    margin: 25px 0;
+    padding: 25px;
+    background-color: #fff
+}
+
+.content>div table td, .content>p table td {
+    padding: 5px
+}
+
+.content>div table td:first-child, .content>p table td:first-child {
+    font-weight: 700;
+    color: #4a536e;
+    padding-right: 15px
+}
+
+.content>div p {
+    padding: 5px;
+    margin: 0 0 10px 0
+}
+
+.content>div {
+    margin-top: 37px;
+    padding: 40px 11px
+}
+
+.requests {
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    z-index: 99999999;
+    transition: .5s ease-in-out;
+    overflow: hidden;
+    background: #fff;
+    -webkit-transition: .5s ease-in-out;
+    -moz-transition: .5s ease-in-out;
+    -ms-transition: .5s ease-in-out;
+    -o-transition: .5s ease-in-out
+}
+
+.requests.active {
+    width: 300px;
+    height: 300px;
+    overflow: scroll;
+    box-shadow: 2.5px .5px 10.5px .5px grey;
+    background: #fff
+}
+
+.card {
+    width: 100%;
+    height: 180px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    padding: 0 5px
+}
+
+.card_image {
+    width: 57px;
+    height: 57px;
+    overflow: hidden
+}
+
+.card img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    background: #fff;
+    border: 6px solid #4364f7
+}
+
+.right_card {
+    width: calc(100% - 60px);
+    display: flex;
+    flex-direction: column
+}
+
+.info {
+    width: 100%;
+    padding: 0 10px
+}
+
+.card h2 {
+    font-weight: 600;
+    font-size: 15px;
+    padding: 3px 0;
+    margin: 5px 0;
+    width: 100%
+}
+
+.card p {
+    color: #6e8ca0;
+    font-size: 14.5px;
+    padding: 3px 0;
+    margin: 5px 0;
+    width: 100%
+}
+
+.card .buttongroup {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center
+}
+
+.card .buttongroup button {
+    border: 1px solid #f0f3f4;
+    height: 30px;
+    width: 106px;
+    font-weight: 500;
+    transition: .3s ease-in-out;
+    font-size: 14px;
+    cursor: pointer;
+    -webkit-transition: .3s ease-in-out;
+    -moz-transition: .3s ease-in-out;
+    -ms-transition: .3s ease-in-out;
+    -o-transition: .3s ease-in-out
+}
+
+.card .buttongroup button:nth-child(even) {
+    border-left: none
+}
+
+.card .buttongroup button:hover {
+    color: #4364f7;
+    background: #f7f7f7
+}

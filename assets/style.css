@@ -1,0 +1,250 @@
+@font-face {
+    font-family: 'lato';
+    src: url('../adminpanel/controlpanal/assets/Lato-Regular.ttf') format('truetype');
+}
+
+*{
+	scroll-behavior: smooth;
+	box-sizing: border-box;
+	font-family: 'lato';
+}
+
+html, body{
+	height: 100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+form.login {
+    width: 220px;
+    height: 300px;
+    display: flex;
+    place-items: center;
+    place-content: center;
+    flex-direction: column;
+    background: white;
+    color: black;
+    border-radius: 4px;
+    transition: 0.5s all;
+    padding: 7px;
+    box-shadow: -1px 11px 16px -5px grey;
+    letter-spacing: 0.051rem;
+}
+
+.inputField {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+    margin-bottom: 9px;
+}
+
+.inputField input {
+    background: none;
+    outline: none;
+    border: none;
+    color: black;
+    padding: 4px;
+    font-size: 12px;
+    border-bottom: 0.2px solid black;
+    width: 100%;
+}
+
+.inputField label{
+	margin-bottom: 4px;
+
+}
+
+form.login h4,.formTitle {
+    margin: 3px 0px;
+    width: 100%;
+}
+
+.checkInput {
+    width: 100%;
+}
+
+.checkInputInputField {
+    width: 100%;
+    margin-bottom: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.checkInputInputField label {
+    cursor: pointer;
+}
+
+.checkInputInputField input {
+    transition: 0.5s ease;
+    overflow: hidden;
+    position: relative;
+    width: 15px;
+    height: 15px;
+    appearance: none;
+    border-radius: 50%;
+    border: 0.2px solid;
+    transition: 0.5s ease;
+}
+
+.checkInputInputField input:before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    position: absolute;
+    display: block;
+    left: -16%;
+    background: green;
+    bottom: -100%;
+    margin: 0 5px;
+    transition: 0.5s ease;
+    border-radius: 50%;
+    animation: notcheck 5.5s ease forwards;
+}
+
+.checkInputInputField input:checked{
+
+}
+
+.checkInputInputField input:checked:before{
+    animation: check 0.5s cubic-bezier(0, 1.59, 0, 0.01) forwards;
+    /*top: 18%;*/
+}
+
+@keyframes check{
+    0%{
+       bottom: -100%;
+       transition: 0s ease; 
+       display: none;
+    }
+    50%{
+        top: -100%;
+        box-shadow: 10px 0px 3px 30px grey;
+    }
+    100%{
+         transition: 0.5s ease; 
+         display: block;
+         top: 18%;
+        box-shadow: 0px 0px 0px 0px grey;
+    }
+}
+
+@keyframes notcheck{
+    0%{
+       top: -100%;
+    }
+    100%{
+        bottom: -100%;
+    }
+}
+
+.checkInputInputField input:checked {
+
+}
+
+.formTitle{
+text-align: center;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    background: transparent;
+}
+
+h4.errtxt {
+    position: absolute;
+    top: 1vh;
+    right: -100%;
+    min-width: 60vh;
+    display: flex;
+    background: green;
+    min-height: 12vh;
+    place-content: center;
+    place-items: center;
+    color: white;
+    letter-spacing: 0.1vh;
+    border-radius: 1vh;
+    z-index: 99999;
+    transition: 0.5s all;
+    padding: 0vh 1vh;
+}
+
+h4.errtxt::before {
+    content: '';
+    width: 0%;
+    height: 1vh;
+    left: 0vh;
+    position: absolute;
+    background: white;
+    bottom: 0vh;
+    transition: 0.2s all;
+}
+
+h4.errtxt.active::before {
+    animation: border 3s ease forwards;
+}
+
+h4.errtxt.active {
+    right: 2vh;
+}
+
+@keyframes border {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: 100%;
+    }
+}
+
+form.login button[type='submit'] {
+    width: 137px;
+    height: 30px;
+    padding: 0 3px;
+    border: none;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+    z-index: 3;
+    transition-delay: 0.2s;
+    transition: 0.5s ease;
+    margin: 4px 0;
+        font-size: 17px;
+}
+
+form.login button[type='submit']:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5%;
+    background: black;
+    left: 0;
+    transition: 0.5s ease;
+z-index: -1;
+}
+
+form.login button[type='submit']:hover:before{
+height: 100%;
+    border-radius: 3px;
+}
+
+form.login button[type='submit']:hover{
+    color: white;
+        font-size: 14px;
+}

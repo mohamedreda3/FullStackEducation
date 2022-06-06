@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+- phpMyAdmin XML Dump
+- version 5.1.1
+- https://www.phpmyadmin.net
+-
+- Host: 127.0.0.1
+- Generation Time: Apr 16, 2022 at 03:01 PM
+- Server version: 10.4.20-MariaDB
+- PHP Version: 8.0.9
+-->
+
+<pma_xml_export version="1.0" xmlns:pma="https://www.phpmyadmin.net/some_doc_url/">
+    <!--
+    - Structure schemas
+    -->
+    <pma:structure_schemas>
+        <pma:database name="education" collation="utf8mb4_general_ci" charset="utf8mb4">
+            <pma:table name="admin">
+                CREATE TABLE `admin` (
+                  `admin_eml` varchar(50) NOT NULL,
+                  `admin_psrd` varchar(38) NOT NULL,
+                  `admin_img` text NOT NULL DEFAULT '../../assets/userimages/user.png',
+                  `admin_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `username` varchar(38) NOT NULL,
+                  PRIMARY KEY (`admin_eml`),
+                  UNIQUE KEY `admin_id` (`admin_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="classes">
+                CREATE TABLE `classes` (
+                  `class_code` varchar(6) NOT NULL,
+                  `class_name` varchar(50) NOT NULL,
+                  PRIMARY KEY (`class_code`),
+                  UNIQUE KEY `class_name` (`class_name`)
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="students">
+                CREATE TABLE `students` (
+                  `stu_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `stu_eml` varchar(50) NOT NULL,
+                  `stu_psrd` varchar(38) NOT NULL,
+                  `stu_nm` varchar(50) NOT NULL,
+                  `stu_adrs` varchar(50) NOT NULL,
+                  `stu_phone` varchar(15) NOT NULL,
+                  `stu_img` text NOT NULL DEFAULT '../../assets/usersimages/user.png',
+                  PRIMARY KEY (`stu_eml`),
+                  UNIQUE KEY `stu_id` (`stu_id`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="stu_class">
+                CREATE TABLE `stu_class` (
+                  `stu_eml` varchar(30) NOT NULL,
+                  `class_id` varchar(6) NOT NULL,
+                  `student_grade_in_this_class` float DEFAULT 0,
+                  PRIMARY KEY (`class_id`,`stu_eml`),
+                  KEY `stu_class_email` (`stu_eml`),
+                  CONSTRAINT `class_classStu_code` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+                  CONSTRAINT `stu_class_email` FOREIGN KEY (`stu_eml`) REFERENCES `students` (`stu_eml`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="subjects">
+                CREATE TABLE `subjects` (
+                  `subject_name` varchar(38) NOT NULL,
+                  `subject_code` varchar(6) NOT NULL,
+                  `class_code` varchar(6) NOT NULL,
+                  PRIMARY KEY (`subject_code`,`class_code`),
+                  UNIQUE KEY `subject_name` (`subject_name`),
+                  KEY `subject_class_relation` (`class_code`),
+                  CONSTRAINT `subject_class_relation` FOREIGN KEY (`class_code`) REFERENCES `classes` (`class_code`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="subjects_grades">
+                CREATE TABLE `subjects_grades` (
+                  `subject_grade` double NOT NULL,
+                  `subject_code` varchar(6) NOT NULL,
+                  `student_email` varchar(50) NOT NULL,
+                  PRIMARY KEY (`subject_code`,`student_email`),
+                  KEY `subject_student_relation` (`student_email`),
+                  CONSTRAINT `subject_student_relation` FOREIGN KEY (`student_email`) REFERENCES `students` (`stu_eml`) ON DELETE CASCADE ON UPDATE CASCADE,
+                  CONSTRAINT `subject_subject_relation` FOREIGN KEY (`subject_code`) REFERENCES `subjects` (`subject_code`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="teachers">
+                CREATE TABLE `teachers` (
+                  `teacher_id` int(11) NOT NULL AUTO_INCREMENT,
+                  `teacher_name` varchar(38) NOT NULL,
+                  `teacher_eml` varchar(50) NOT NULL,
+                  `teacher_img` text NOT NULL DEFAULT '../../assets/userimages/user.png',
+                  `teacher_nphone` varchar(38) NOT NULL,
+                  `teacher_psrd` varchar(50) NOT NULL,
+                  PRIMARY KEY (`teacher_eml`),
+                  UNIQUE KEY `teacher_id` (`teacher_id`),
+                  UNIQUE KEY `teacher_eml` (`teacher_eml`)
+                ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+            <pma:table name="tech_class">
+                CREATE TABLE `tech_class` (
+                  `class_id` varchar(6) NOT NULL,
+                  `email` varchar(50) NOT NULL,
+                  PRIMARY KEY (`email`,`class_id`),
+                  KEY `class_class_code` (`class_id`),
+                  CONSTRAINT `class_class_code` FOREIGN KEY (`class_id`) REFERENCES `classes` (`class_code`) ON DELETE CASCADE ON UPDATE CASCADE,
+                  CONSTRAINT `tech_class_email` FOREIGN KEY (`email`) REFERENCES `teachers` (`teacher_eml`) ON DELETE CASCADE ON UPDATE CASCADE
+                ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+            </pma:table>
+        </pma:database>
+    </pma:structure_schemas>
+
+    <!--
+    - Database: 'education'
+    -->
+    <database name="education">
+        <!-- Table admin -->
+        <table name="admin">
+            <column name="admin_eml">mmoh33650@gmail.com</column>
+            <column name="admin_psrd">21232f297a57a5a743894a0e4a801fc3</column>
+            <column name="admin_img">../../assets/usersimages/user.png</column>
+            <column name="admin_id">1</column>
+            <column name="username">Mohamed Reda</column>
+        </table>
+        <!-- Table classes -->
+        <table name="classes">
+            <column name="class_code">S#e@c</column>
+            <column name="class_name">Second team</column>
+        </table>
+        <!-- Table students -->
+        <table name="students">
+            <column name="stu_id">1</column>
+            <column name="stu_eml">mmoh33650@gmail.com</column>
+            <column name="stu_psrd">admin</column>
+            <column name="stu_nm">mohamed Reda</column>
+            <column name="stu_adrs">12_street</column>
+            <column name="stu_phone">01212745939</column>
+            <column name="stu_img">../../assets/usersimages/user.png</column>
+        </table>
+        <!-- Table stu_class -->
+        <table name="stu_class">
+            <column name="stu_eml">mmoh33650@gmail.com</column>
+            <column name="class_id">S#e@c</column>
+            <column name="student_grade_in_this_class">0</column>
+        </table>
+        <!-- Table subjects -->
+        <table name="subjects">
+            <column name="subject_name">computer science basics</column>
+            <column name="subject_code">CS50</column>
+            <column name="class_code">S#e@c</column>
+        </table>
+        <table name="subjects">
+            <column name="subject_name">math1</column>
+            <column name="subject_code">MA111</column>
+            <column name="class_code">S#e@c</column>
+        </table>
+        <table name="subjects">
+            <column name="subject_name">programming1</column>
+            <column name="subject_code">pr101</column>
+            <column name="class_code">S#e@c</column>
+        </table>
+        <!-- Table subjects_grades -->
+        <table name="subjects_grades">
+            <column name="subject_grade">79.4</column>
+            <column name="subject_code">CS50</column>
+            <column name="student_email">mmoh33650@gmail.com</column>
+        </table>
+        <table name="subjects_grades">
+            <column name="subject_grade">57.1</column>
+            <column name="subject_code">MA111</column>
+            <column name="student_email">mmoh33650@gmail.com</column>
+        </table>
+        <!-- Table teachers -->
+        <table name="teachers">
+            <column name="teacher_id">1</column>
+            <column name="teacher_name">ahmed</column>
+            <column name="teacher_eml">mmoh33650@gmail.com</column>
+            <column name="teacher_img">../../assets/usersimages/user.png</column>
+            <column name="teacher_nphone">01212745939</column>
+            <column name="teacher_psrd">ce26b2d514efe35b3189f20c51570f98</column>
+        </table>
+        <table name="teachers">
+            <column name="teacher_id">6</column>
+            <column name="teacher_name">mohamed Ahmed</column>
+            <column name="teacher_eml">mohammed.3101111348@ics.tanta.edu.eg</column>
+            <column name="teacher_img">../../assets/usersimages/about-left-image.png</column>
+            <column name="teacher_nphone">01212745939</column>
+            <column name="teacher_psrd">ce26b2d514efe35b3189f20c51570f98</column>
+        </table>
+        <table name="teachers">
+            <column name="teacher_id">5</column>
+            <column name="teacher_name">mohamed Ahmed</column>
+            <column name="teacher_eml">mohammed.310111348@ics.tanta.edu.eg</column>
+            <column name="teacher_img">../../assets/usersimages/user.png</column>
+            <column name="teacher_nphone">01212745939</column>
+            <column name="teacher_psrd">ce26b2d514efe35b3189f20c51570f98</column>
+        </table>
+        <table name="teachers">
+            <column name="teacher_id">4</column>
+            <column name="teacher_name">mohamed</column>
+            <column name="teacher_eml">mohammed.31011348@ics.tanta.edu.eg</column>
+            <column name="teacher_img">../../assets/usersimages/user.png</column>
+            <column name="teacher_nphone">01212745939</column>
+            <column name="teacher_psrd">ce26b2d514efe35b3189f20c51570f98</column>
+        </table>
+        <table name="teachers">
+            <column name="teacher_id">13</column>
+            <column name="teacher_name">mohamed Ahmed</column>
+            <column name="teacher_eml">mohammged.31011348@ics.tanta.edu.eg</column>
+            <column name="teacher_img">../../assets/usersimages/user.png</column>
+            <column name="teacher_nphone">01212745939</column>
+            <column name="teacher_psrd">14189c671d1db907090ffc546ce14488</column>
+        </table>
+        <!-- Table tech_class -->
+        <table name="tech_class">
+            <column name="class_id">S#e@c</column>
+            <column name="email">mmoh33650@gmail.com</column>
+        </table>
+        <table name="tech_class">
+            <column name="class_id">S#e@c</column>
+            <column name="email">mohammed.3101111348@ics.tanta.edu.eg</column>
+        </table>
+    </database>
+</pma_xml_export>
